@@ -50,9 +50,21 @@ class BirdseyePipeline(object):
     def handle_error(self, e):
         logging.log(logging.ERROR, e)
 
+
 class JsonWriterPipeline(object):
     def __init__(self):
         self.file = open('test.json', 'wb')
+
+    def process_item(self, item, spider):
+        line = json.dumps(dict(item)) + "\n"
+        self.file.write(line)
+        return item
+
+
+class JsonStartUrlWriterPipeline(object):
+
+    def __init__(self):
+        self.file = open('assets//xsmedical_start_urls.json', 'wb')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item)) + "\n"
