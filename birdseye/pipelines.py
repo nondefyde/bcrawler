@@ -9,20 +9,12 @@ class BirdseyePipeline(object):
         self.dbpool = adbapi.ConnectionPool('MySQLdb', db='birdseye',
                                             user='root', passwd='', cursorclass=MySQLdb.cursors.DictCursor,
                                             charset='utf8', use_unicode=True)
-        self.file = open('items.json', 'wb')
 
     def process_item(self, item, spider):
         # run db query in thread pool
         query = self.dbpool.runInteraction(self._conditional_insert, item)
         query.addErrback(self.handle_error)
-
-        self._print_to_json_file(item)
-
         return item
-
-    def _print_to_json_file(self, item):
-        line = json.dumps(dict(item)) + "\n"
-        self.file.write(line)
 
     def _conditional_insert(self, tx, item):
 
@@ -53,7 +45,7 @@ class BirdseyePipeline(object):
 
 class JsonWriterPipeline(object):
     def __init__(self):
-        self.file = open('test.json', 'wb')
+        self.file = open('item.json', 'wb')
 
     def process_item(self, item,spider):
         line = json.dumps(dict(item)) + ",\n"
