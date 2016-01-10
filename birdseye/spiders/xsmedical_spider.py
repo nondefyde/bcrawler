@@ -13,7 +13,6 @@ class XsmedicalSpider(scrapy.Spider):
         urls = self.get_dict('assets//xsmedical_start_urls.json')
         for url in urls:
             self.start_urls = self.start_urls + [url['url']]
-            break
 
     def parse(self, response):
         urls = response.css('table div a.productnamecolor::attr(href)').extract()
@@ -24,7 +23,6 @@ class XsmedicalSpider(scrapy.Spider):
             item['vendor'] = 'http://www.xsmedical.com'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
-            # break
 
     def parse_event(self, response):
         sel = response.css('html')
@@ -34,10 +32,8 @@ class XsmedicalSpider(scrapy.Spider):
         item['price'] = sel.css('div.product_productprice b span::text').extract()[0]
         item['product_url'] = response.request.url
         description = sel.css('span#product_description::text').extract()
-        for n in range(len(description)):
-            description += "" + description[n]
-        item['description'] = description
-        item['description'] = description
+        desc = ''.join(description)
+        item['description'] = desc
         item['manufacturer'] = sel.css('table td meta[itemprop="manufacturer"]::attr(content)').extract()
         item['oem'] = sel.css('span.product_code::text').extract()[0]
 

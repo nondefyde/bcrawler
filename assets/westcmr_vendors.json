@@ -1,0 +1,510 @@
+[
+  {
+    "url": "http://www.westcmr.com/3m-healthcare",
+    "manufacturer": "3M HEALTHCARE"
+  },
+  {
+    "url": "http://www.westcmr.com/abeon-medical",
+    "manufacturer": "ABEON MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/accessclosure",
+    "manufacturer": "ACCESSCLOSURE"
+  },
+  {
+    "url": "http://www.westcmr.com/acclarent",
+    "manufacturer": "ACCLARENT"
+  },
+  {
+    "url": "http://www.westcmr.com/active-medical",
+    "manufacturer": "ACTIVE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/acudriver",
+    "manufacturer": "ACUDRIVER"
+  },
+  {
+    "url": "http://www.westcmr.com/aesculap",
+    "manufacturer": "AESCULAP"
+  },
+  {
+    "url": "http://www.westcmr.com/aga-medical",
+    "manufacturer": "AGA MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/allergan",
+    "manufacturer": "ALLERGAN"
+  },
+  {
+    "url": "http://www.westcmr.com/amendia",
+    "manufacturer": "AMENDIA"
+  },
+  {
+    "url": "http://www.westcmr.com/american-medical-systems",
+    "manufacturer": "AMERICAN MEDICAL SYSTEMS"
+  },
+  {
+    "url": "http://www.westcmr.com/anchor-surgical",
+    "manufacturer": "ANCHOR SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/anspach",
+    "manufacturer": "ANSPACH"
+  },
+  {
+    "url": "http://www.westcmr.com/anulux",
+    "manufacturer": "ANULUX"
+  },
+  {
+    "url": "http://www.westcmr.com/applied-medical",
+    "manufacturer": "APPLIED MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/arthrex",
+    "manufacturer": "ARTHREX"
+  },
+  {
+    "url": "http://www.westcmr.com/arthrocare",
+    "manufacturer": "ARTHROCARE"
+  },
+  {
+    "url": "http://www.westcmr.com/arthrotek",
+    "manufacturer": "ARTHROTEK"
+  },
+  {
+    "url": "http://www.westcmr.com/aspide-medical",
+    "manufacturer": "ASPIDE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/atos-medical-1",
+    "manufacturer": "ATOS MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/atricure",
+    "manufacturer": "ATRICURE"
+  },
+  {
+    "url": "http://www.westcmr.com/atrium",
+    "manufacturer": "ATRIUM"
+  },
+  {
+    "url": "http://www.westcmr.com/bard-davol",
+    "manufacturer": "BARD DAVOL"
+  },
+  {
+    "url": "http://www.westcmr.com/bayer-essure",
+    "manufacturer": "BAYER-ESSURE"
+  },
+  {
+    "url": "http://www.westcmr.com/bayer-medrad",
+    "manufacturer": "BAYER-MEDRAD"
+  },
+  {
+    "url": "http://www.westcmr.com/biomet",
+    "manufacturer": "BIOMET"
+  },
+  {
+    "url": "http://www.westcmr.com/biosciences",
+    "manufacturer": "BIOSCIENCES"
+  },
+  {
+    "url": "http://www.westcmr.com/biosense-webster",
+    "manufacturer": "BIOSENSE WEBSTER"
+  },
+  {
+    "url": "http://www.westcmr.com/boston-endo-surgical",
+    "manufacturer": "BOSTON ENDO-SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/boston-scientific",
+    "manufacturer": "BOSTON SCIENTIFIC"
+  },
+  {
+    "url": "http://www.westcmr.com/busse",
+    "manufacturer": "BUSSE"
+  },
+  {
+    "url": "http://www.westcmr.com/caldera",
+    "manufacturer": "CALDERA"
+  },
+  {
+    "url": "http://www.westcmr.com/cardinal-health",
+    "manufacturer": "CARDINAL HEALTH"
+  },
+  {
+    "url": "http://www.westcmr.com/cardiovascular-systems",
+    "manufacturer": "CARDIOVASCULAR SYSTEMS"
+  },
+  {
+    "url": "http://www.westcmr.com/carefusion",
+    "manufacturer": "CAREFUSION"
+  },
+  {
+    "url": "http://www.westcmr.com/cayenne-medical",
+    "manufacturer": "CAYENNE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/centurion",
+    "manufacturer": "CENTURION"
+  },
+  {
+    "url": "http://www.westcmr.com/civco",
+    "manufacturer": "CIVCO"
+  },
+  {
+    "url": "http://www.westcmr.com/cl-medical",
+    "manufacturer": "CL MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/codman",
+    "manufacturer": "CODMAN"
+  },
+  {
+    "url": "http://www.westcmr.com/coloplast",
+    "manufacturer": "COLOPLAST"
+  },
+  {
+    "url": "http://www.westcmr.com/conmed-linvatec",
+    "manufacturer": "CONMED LINVATEC"
+  },
+  {
+    "url": "http://www.westcmr.com/cooper-surgical",
+    "manufacturer": "COOPER SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/cordis",
+    "manufacturer": "CORDIS"
+  },
+  {
+    "url": "http://www.westcmr.com/covidien",
+    "manufacturer": "COVIDIEN"
+  },
+  {
+    "url": "http://www.westcmr.com/cyberonics",
+    "manufacturer": "CYBERONICS"
+  },
+  {
+    "url": "http://www.westcmr.com/depuy-mitek",
+    "manufacturer": "DEPUY MITEK"
+  },
+  {
+    "url": "http://www.westcmr.com/deroyal",
+    "manufacturer": "DEROYAL"
+  },
+  {
+    "url": "http://www.westcmr.com/duragen-plus",
+    "manufacturer": "DURAGEN PLUS"
+  },
+  {
+    "url": "http://www.westcmr.com/east-coast-surgical",
+    "manufacturer": "EAST COAST SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/elekta",
+    "manufacturer": "ELEKTA"
+  },
+  {
+    "url": "http://www.westcmr.com/entrigue-surgical",
+    "manufacturer": "ENTRIGUE SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/ethicon",
+    "manufacturer": "ETHICON"
+  },
+  {
+    "url": "http://www.westcmr.com/ethicon-suture",
+    "manufacturer": "ETHICON SUTURE"
+  },
+  {
+    "url": "http://www.westcmr.com/fci-ophthalmics",
+    "manufacturer": "FCI OPHTHALMICS"
+  },
+  {
+    "url": "http://www.westcmr.com/galt",
+    "manufacturer": "GALT"
+  },
+  {
+    "url": "http://www.westcmr.com/ge-healthcare",
+    "manufacturer": "GE HEALTHCARE"
+  },
+  {
+    "url": "http://www.westcmr.com/genzyme",
+    "manufacturer": "GENZYME"
+  },
+  {
+    "url": "http://www.westcmr.com/gore",
+    "manufacturer": "GORE"
+  },
+  {
+    "url": "http://www.westcmr.com/grace-medical",
+    "manufacturer": "GRACE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/great-south-surgical-solutions",
+    "manufacturer": "GREAT SOUTH SURGICAL SOLUTIONS"
+  },
+  {
+    "url": "http://www.westcmr.com/greiner-bio-one",
+    "manufacturer": "GREINER BIO-ONE"
+  },
+  {
+    "url": "http://www.westcmr.com/gyrus-acmi",
+    "manufacturer": "GYRUS ACMI"
+  },
+  {
+    "url": "http://www.westcmr.com/hologic",
+    "manufacturer": "HOLOGIC"
+  },
+  {
+    "url": "http://www.westcmr.com/hydrocision",
+    "manufacturer": "HYDROCISION"
+  },
+  {
+    "url": "http://www.westcmr.com/i-flow",
+    "manufacturer": "I-FLOW"
+  },
+  {
+    "url": "http://www.westcmr.com/inavein",
+    "manufacturer": "INAVEIN"
+  },
+  {
+    "url": "http://www.westcmr.com/instratek",
+    "manufacturer": "INSTRATEK"
+  },
+  {
+    "url": "http://www.westcmr.com/integra",
+    "manufacturer": "INTEGRA"
+  },
+  {
+    "url": "http://www.westcmr.com/intersect-ent-1",
+    "manufacturer": "INTERSECT ENT"
+  },
+  {
+    "url": "http://www.westcmr.com/intuitive-surgical",
+    "manufacturer": "INTUITIVE SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/invotec",
+    "manufacturer": "INVOTEC"
+  },
+  {
+    "url": "http://www.westcmr.com/karl-storz",
+    "manufacturer": "KARL STORZ"
+  },
+  {
+    "url": "http://www.westcmr.com/katena",
+    "manufacturer": "KATENA"
+  },
+  {
+    "url": "http://www.westcmr.com/labtician",
+    "manufacturer": "LABTICIAN"
+  },
+  {
+    "url": "http://www.westcmr.com/lemaitre-vascular",
+    "manufacturer": "LEMAITRE VASCULAR"
+  },
+  {
+    "url": "http://www.westcmr.com/lexion",
+    "manufacturer": "LEXION"
+  },
+  {
+    "url": "http://www.westcmr.com/lina-medical",
+    "manufacturer": "LINA MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/lsi-solutions",
+    "manufacturer": "LSI SOLUTIONS"
+  },
+  {
+    "url": "http://www.westcmr.com/maquet",
+    "manufacturer": "MAQUET"
+  },
+  {
+    "url": "http://www.westcmr.com/mcghan-medical",
+    "manufacturer": "MCGHAN MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/med-comp",
+    "manufacturer": "MED-COMP"
+  },
+  {
+    "url": "http://www.westcmr.com/medichoice",
+    "manufacturer": "MEDICHOICE"
+  },
+  {
+    "url": "http://www.westcmr.com/medone-surgical",
+    "manufacturer": "MEDONE SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/medtronic",
+    "manufacturer": "MEDTRONIC"
+  },
+  {
+    "url": "http://www.westcmr.com/megadyne",
+    "manufacturer": "MEGADYNE"
+  },
+  {
+    "url": "http://www.westcmr.com/mepilex",
+    "manufacturer": "MEPILEX"
+  },
+  {
+    "url": "http://www.westcmr.com/merit-medical",
+    "manufacturer": "MERIT MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/microaire",
+    "manufacturer": "MICROAIRE"
+  },
+  {
+    "url": "http://www.westcmr.com/microline-surgical",
+    "manufacturer": "MICROLINE SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/molnlycke",
+    "manufacturer": "MOLNLYCKE"
+  },
+  {
+    "url": "http://www.westcmr.com/navilyst-medical",
+    "manufacturer": "NAVILYST MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/ncontact-surgical",
+    "manufacturer": "NCONTACT SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/neurotherm",
+    "manufacturer": "NEUROTHERM"
+  },
+  {
+    "url": "http://www.westcmr.com/olympus",
+    "manufacturer": "OLYMPUS"
+  },
+  {
+    "url": "http://www.westcmr.com/orthovita",
+    "manufacturer": "ORTHOVITA"
+  },
+  {
+    "url": "http://www.westcmr.com/ovesco-endoscopy-usa",
+    "manufacturer": "OVESCO ENDOSCOPY USA"
+  },
+  {
+    "url": "http://www.westcmr.com/pressure-products",
+    "manufacturer": "PRESSURE PRODUCTS"
+  },
+  {
+    "url": "http://www.westcmr.com/progressive-medical",
+    "manufacturer": "PROGRESSIVE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/richard-wolf",
+    "manufacturer": "RICHARD-WOLF"
+  },
+  {
+    "url": "http://www.westcmr.com/rti-biologics",
+    "manufacturer": "RTI-BIOLOGICS "
+  },
+  {
+    "url": "http://www.westcmr.com/sanofi-aventis",
+    "manufacturer": "SANOFI AVENTIS"
+  },
+  {
+    "url": "http://www.westcmr.com/smith-nephew",
+    "manufacturer": "SMITH & NEPHEW"
+  },
+  {
+    "url": "http://www.westcmr.com/smith-medical",
+    "manufacturer": "SMITH MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/specialty-surgery",
+    "manufacturer": "SPECIALTY SURGERY"
+  },
+  {
+    "url": "http://www.westcmr.com/staar-surgical",
+    "manufacturer": "STAAR SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/starsurgical",
+    "manufacturer": "STARSURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/st-jude-medical",
+    "manufacturer": "ST JUDE MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/stryker",
+    "manufacturer": "STRYKER"
+  },
+  {
+    "url": "http://www.westcmr.com/sunmed",
+    "manufacturer": "SUNMED"
+  },
+  {
+    "url": "http://www.westcmr.com/surgiquest",
+    "manufacturer": "SURGIQUEST"
+  },
+  {
+    "url": "http://www.westcmr.com/surgistar",
+    "manufacturer": "SURGISTAR"
+  },
+  {
+    "url": "http://www.westcmr.com/synovis",
+    "manufacturer": "SYNOVIS"
+  },
+  {
+    "url": "http://www.westcmr.com/synthes",
+    "manufacturer": "SYNTHES"
+  },
+  {
+    "url": "http://www.westcmr.com/torax",
+    "manufacturer": "TORAX"
+  },
+  {
+    "url": "http://www.westcmr.com/vascular-technology",
+    "manufacturer": "VASCULAR TECHNOLOGY"
+  },
+  {
+    "url": "http://www.westcmr.com/vnus",
+    "manufacturer": "VNUS"
+  },
+  {
+    "url": "http://www.westcmr.com/weck",
+    "manufacturer": "WECK"
+  },
+  {
+    "url": "http://www.westcmr.com/wright-medical",
+    "manufacturer": "WRIGHT MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/zevex",
+    "manufacturer": "ZEVEX"
+  },
+  {
+    "url": "http://www.westcmr.com/zimmer",
+    "manufacturer": "ZIMMER"
+  },
+  {
+    "url": "http://www.westcmr.com/aspen-surgical",
+    "manufacturer": "ASPEN-SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/acumed",
+    "manufacturer": "ACUMED"
+  },
+  {
+    "url": "http://www.westcmr.com/msi-precision-specialty",
+    "manufacturer": "MSI PRECISION SPECIALTY"
+  },
+  {
+    "url": "http://www.westcmr.com/omniguide-surgical",
+    "manufacturer": "OMNIGUIDE SURGICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/utah-medical",
+    "manufacturer": "UTAH MEDICAL"
+  },
+  {
+    "url": "http://www.westcmr.com/xodus-medical",
+    "manufacturer": "XODUS MEDICAL"
+  }
+]

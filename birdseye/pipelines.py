@@ -55,8 +55,8 @@ class JsonWriterPipeline(object):
     def __init__(self):
         self.file = open('test.json', 'wb')
 
-    def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + "\n"
+    def process_item(self, item,spider):
+        line = json.dumps(dict(item)) + ",\n"
         self.file.write(line)
         return item
 
@@ -64,9 +64,9 @@ class JsonWriterPipeline(object):
 class JsonStartUrlWriterPipeline(object):
 
     def __init__(self):
-        self.file = open('assets//xsmedical_start_urls.json', 'wb')
+        self.file = open('assets//the_file.json', 'wb')
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item)) + "\n"
+        line = json.dumps(dict(item)) + ",\n"
         self.file.write(line)
         return item
