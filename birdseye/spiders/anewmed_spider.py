@@ -5,9 +5,20 @@ from birdseye.items import BirdseyeItem
 class AnewmedSpider(scrapy.Spider):
     name = "anewmed"
     allowed_domains = ["anewmed.com"]
-    start_urls = ['http://shop.anewmed.com/']
+    start_urls = [
+        'http://shop.anewmed.com/In-Date-Devices_c16.htm',
+        'http://shop.anewmed.com/Repackaged-Devices_c39.htm',
+    ]
 
     def parse(self, response):
+        cat_urls = response.css('ul li ul li a::attr(href)').extract()
+        for num in range(len(cat_urls)):
+            url = cat_urls[num]
+            url = 'http://shop.anewmed.com' + url.strip()
+            request = scrapy.Request(url, callback=self.parse_category)
+            yield request
+
+    def parse_category(self, response):
         urls = response.css('table.productTable td.titleRow a::attr(href)').extract()
         for num in range(len(urls)):
             url = urls[num]
@@ -16,6 +27,7 @@ class AnewmedSpider(scrapy.Spider):
             item['vendor'] = 'http://shop.anewmed.com/'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
+
 
     def parse_event(self, response):
         sel = response.css('body')
