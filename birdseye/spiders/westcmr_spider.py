@@ -7,7 +7,7 @@ class ShopspsSpider(scrapy.Spider):
     vendors = ''
     name = "west"
     allowed_domains = ["westcmr.com"]
-    start_urls = ['http://www.westcmr.com/anchor-surgical']
+    start_urls = []
 
     def __init__(self, **kwargs):
         super(ShopspsSpider, self).__init__(**kwargs)
@@ -17,6 +17,11 @@ class ShopspsSpider(scrapy.Spider):
             self.start_urls = self.start_urls + [url]
 
     def parse(self, response):
+        view_more_url = response.css('a.btn-view-more::attr(href)').extract()
+        if len(view_more_url) > 0:
+            more_page_url = 'http://www.westcmr.com' + view_more_url[0]
+            yield scrapy.Request(more_page_url, callback=self.parse)
+
         urls = response.css('ul.unstyled li.product-title a::attr(href)').extract()
         for num in range(len(urls)):
             url = urls[num]
@@ -25,6 +30,8 @@ class ShopspsSpider(scrapy.Spider):
             item['vendor'] = 'http://www.westcmr.com'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
+
+        print response.request.url
 
     def parse_event(self, response):
         sel = response.css('body')
