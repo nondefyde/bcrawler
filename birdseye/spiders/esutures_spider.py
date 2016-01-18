@@ -19,6 +19,7 @@ class XsupplySpider(scrapy.Spider):
             item['vendor'] = 'www.esutures.com'
             request = scrapy.Request(item['url'], callback=self.parse_type, meta={'item': item})
             yield request
+            break
 
     def parse_type(self, response):
         item = response.meta['item']

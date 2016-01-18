@@ -19,25 +19,32 @@ class BirdseyePipeline(object):
     def _conditional_insert(self, tx, item):
 
         # all this block run on it's own thread
-        tx.execute("select * from product_tb where product_url = %s", (item['product_url'],))
-        result = tx.fetchone()
-        if result:
-            query = "UPDATE product_tb SET "
-            query += "product_name=%s, description=%s, manufacturer=%s, oem=%s,"
-            query += "price=%s, stock_quantity=%s, vendor=%s WHERE product_url=%s "
+        # tx.execute("select * from product_tb where product_url = %s", (item['product_url'],))
+        # result = tx.fetchone()
+        tx.execute(
+            "insert into product_tb (product_name, description, manufacturer, oem,"
+            " price, stock_quantity, product_url, vendor)"
+            "values (%s, %s, %s, %s, %s, %s, %s, %s)",
+            (item['product_name'], item['description'], item['manufacturer'], item['oem'],
+             item['price'], item['stock_quantity'], item['product_url'], item['vendor']))
 
-            tx.execute(query, (item['product_name'], item['description'], item['manufacturer'],
-                               item['oem'], item['price'], item['stock_quantity'], item['vendor'], item['product_url']))
-            logging.log(logging.INFO, "Item has  been updated in db: %s" % item)
-        else:
-            tx.execute(
-                "insert into product_tb (product_name, description, manufacturer, oem,"
-                " price, stock_quantity, product_url, vendor)"
-                "values (%s, %s, %s, %s, %s, %s, %s, %s)",
-                (item['product_name'], item['description'], item['manufacturer'], item['oem'],
-                 item['price'], item['stock_quantity'], item['product_url'], item['vendor'])
-            )
-            logging.log(logging.INFO, "Item stored in db: %s" % item)
+        # if result:
+        #     query = "UPDATE product_tb SET "
+        #     query += "product_name=%s, description=%s, manufacturer=%s, oem=%s,"
+        #     query += "price=%s, stock_quantity=%s, vendor=%s WHERE product_url=%s "
+        #
+        #     tx.execute(query, (item['product_name'], item['description'], item['manufacturer'],
+        #                        item['oem'], item['price'], item['stock_quantity'], item['vendor'], item['product_url']))
+        #     logging.log(logging.INFO, "Item has  been updated in db: %s" % item)
+        # else:
+        #     tx.execute(
+        #         "insert into product_tb (product_name, description, manufacturer, oem,"
+        #         " price, stock_quantity, product_url, vendor)"
+        #         "values (%s, %s, %s, %s, %s, %s, %s, %s)",
+        #         (item['product_name'], item['description'], item['manufacturer'], item['oem'],
+        #          item['price'], item['stock_quantity'], item['product_url'], item['vendor'])
+        #     )
+        #     logging.log(logging.INFO, "Item stored in db: %s" % item)
 
     def handle_error(self, e):
         logging.log(logging.ERROR, e)
