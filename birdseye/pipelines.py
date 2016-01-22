@@ -18,16 +18,17 @@ class BirdseyePipeline(object):
 
     def _conditional_insert(self, tx, item):
 
-        # all this block run on it's own thread
-        # tx.execute("select * from product_tb where product_url = %s", (item['product_url'],))
-        # result = tx.fetchone()
         tx.execute(
             "insert into product_tb (product_name, description, manufacturer, oem,"
             " price, stock_quantity, product_url, vendor)"
             "values (%s, %s, %s, %s, %s, %s, %s, %s)",
             (item['product_name'], item['description'], item['manufacturer'], item['oem'],
-             item['price'], item['stock_quantity'], item['product_url'], item['vendor']))
+             item['price'], item['stock_quantity'], item['product_url'], item['vendor'])
+        )
 
+        # all this block run on it's own thread
+        # tx.execute("select * from product_tb where product_url = %s", (item['product_url'],))
+        # result = tx.fetchone()
         # if result:
         #     query = "UPDATE product_tb SET "
         #     query += "product_name=%s, description=%s, manufacturer=%s, oem=%s,"

@@ -6,49 +6,48 @@ from birdseye.items import BirdseyeItem
 class XsupplySpider(scrapy.Spider):
     name = "xsupply"
     allowed_domains = ["xs-supply.com"]
-    start_urls = []
-
-    def __init__(self, **kwargs):
-        super(XsupplySpider, self).__init__(**kwargs)
-        urls = self.get_dict('assets//xsupply_start_urls.json')
-        for url in urls:
-            self.start_urls = self.start_urls + [url['url']]
+    start_urls = ['http://www.xs-supply.com/product-list.html']
 
     def parse(self, response):
-        urls = response.css('div.item-image a::attr(href)').extract()
-        title = response.css('h1')
-        prices = response.css('div.item-price::text').extract()
-        quantities = response.css('p#inventory-message::text').extract()
-        oems = response.css('div.item-details h5 a::text').extract()
-        print title
+        urls = response.css('ul#nav li.level-1 a::attr(href)').extract()
+        manufacturers = response.css('ul#nav li.level-1 a::text').extract()
         for num in range(len(urls)):
             url = urls[num]
             item = BirdseyeItem()
             item['url'] = url.strip()
-            item['vendor'] = 'http://www.xs-supply.com'
-            title = response.request.url
-            try:
-                title = title[title.rindex('=') + 1:]
-            except Exception as e:
-                title = title[title.rindex('/') + 1:title.rindex('.')]
-            pass
+            item['manufacturer'] = manufacturers[num]
+            item['vendor'] = 'http://www.xs-supply.com/'
+            request = scrapy.Request(item['url'], callback=self.parse_url, meta={'item': item})
+            yield request
 
-            item['product_name'] = title
+    def parse_url(self, response):
+        item = response.meta['item']
+
+        urls = response.css('div.item-image a::attr(href)').extract()
+        prices = response.css('div.item-price::text').extract()
+        quantities = response.css('p#inventory-message::text').extract()
+        oems = response.css('div.item-details h5 a::text').extract()
+        for num in range(len(urls)):
+            url = urls[num]
+            item['url'] = url.strip()
             item['price'] = (prices[num]).strip()
             item['stock_quantity'] = quantities[num]
             item['product_url'] = url.strip()
-            item['oem'] = oems[num]
-            item['manufacturer'] = 'XS-SUPPLY'
-            item['description'] = ''
-            yield item
+            item['product_name'] = oems[num]
+            item['oem'] = ''
+            request = scrapy.Request(item['product_url'], callback=self.parse_des, meta={'item': item})
+            yield request
 
         paging = response.css('span.current + a::attr(href)').extract()
         if len(paging) > 0:
             next_page = paging[0].strip()
-            request = scrapy.Request(next_page, callback=self.parse)
+            request = scrapy.Request(next_page, callback=self.parse_url, meta={'item': item})
             yield request
 
-    def get_dict(self, path):
-        with open(path, 'r') as f:
-            data = json.load(f)
-        return data
+    def parse_des(self, response):
+        item = response.meta['item']
+        item['description'] = ''
+        description = response.css('h5.title + div.col-md-13').extract()
+        if len(description) > 0:
+            item['description'] = description[0]
+        yield item
