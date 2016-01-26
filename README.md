@@ -15,7 +15,7 @@ or library below are some of the site. The sample site will grow in time to help
 Dependencies
 -------
 
-The following must be installed on ur system before a crawl is started
+The following must be installed in ur system before a crawl is started
 
 * [python 2.7](http://daringfireball.net/projects/markdown/) -- `or follow the installation from the scrapy [documentation](http://scrapy.org/doc/) for the installation
 * [scrapy](http://scrapy.org) -- `An open source and collaborative framework for extracting the data you need from websites.In a fast, simple, yet extensible way.
@@ -23,4 +23,4 @@ The following must be installed on ur system before a crawl is started
 Installation
 -----------
 
-DOC TO BE CONTINUED......
+DOC TO BE CONTINUED...... pls contact me to hel grow this free opensource for crawlers. nondefyde@gmail.com
