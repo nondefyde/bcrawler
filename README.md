@@ -1,4 +1,4 @@
-Scrapy crawlers 
+Scrapy spiders 
 =============
 
 This is a sample code for crawling some of the well known online shops with pyhthon scrapy framework
@@ -23,4 +23,4 @@ The following must be installed in ur system before a crawl is started
 Installation
 -----------
 
-DOC TO BE CONTINUED...... pls contact me to hel grow this free opensource for crawlers. nondefyde@gmail.com
+DOC TO BE CONTINUED...... pls contact me if you are a big fan of open source and want to contribute to helping this largest spiders initiative grow. nondefyde@gmail.com
