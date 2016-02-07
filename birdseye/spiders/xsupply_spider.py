@@ -15,12 +15,14 @@ class XsupplySpider(scrapy.Spider):
             url = urls[num]
             item = BirdseyeItem()
             item['url'] = url.strip()
-            item['manufacturer'] = manufacturers[num]
-            item['vendor'] = 'http://www.xs-supply.com/'
+            # item['manufacturer'] = manufacturers[num]
+            # item['vendor'] = 'http://www.xs-supply.com/'
             request = scrapy.Request(item['url'], callback=self.parse_url, meta={'item': item})
             yield request
+            break
 
     def parse_url(self, response):
+
         item = response.meta['item']
 
         urls = response.css('div.item-image a::attr(href)').extract()
@@ -33,10 +35,11 @@ class XsupplySpider(scrapy.Spider):
             item['price'] = (prices[num]).strip()
             item['stock_quantity'] = quantities[num]
             item['product_url'] = url.strip()
-            item['product_name'] = oems[num]
-            item['oem'] = ''
-            request = scrapy.Request(item['product_url'], callback=self.parse_des, meta={'item': item})
-            yield request
+            item['product_name'] = ''
+            item['oem'] = oems[num]
+            # print item
+            # request = scrapy.Request(item['product_url'], callback=self.description, meta={'item': item})
+            yield item
 
         paging = response.css('span.current + a::attr(href)').extract()
         if len(paging) > 0:
@@ -44,10 +47,10 @@ class XsupplySpider(scrapy.Spider):
             request = scrapy.Request(next_page, callback=self.parse_url, meta={'item': item})
             yield request
 
-    def parse_des(self, response):
+    def description(self, response):
         item = response.meta['item']
-        item['description'] = ''
-        description = response.css('h5.title + div.col-md-13').extract()
-        if len(description) > 0:
-            item['description'] = description[0]
+        # item['description'] = ''
+        # description = response.css('h5.title + div.col-md-13').extract()
+        # if len(description) > 0:
+        #     item['description'] = description[0]
         yield item
