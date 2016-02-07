@@ -15,31 +15,34 @@ class XsupplySpider(scrapy.Spider):
             url = urls[num]
             item = BirdseyeItem()
             item['url'] = url.strip()
-            # item['manufacturer'] = manufacturers[num]
-            # item['vendor'] = 'http://www.xs-supply.com/'
+            item['manufacturer'] = manufacturers[num]
+            item['vendor'] = 'http://www.xs-supply.com/'
             request = scrapy.Request(item['url'], callback=self.parse_url, meta={'item': item})
             yield request
             break
 
     def parse_url(self, response):
-
-        item = response.meta['item']
+        temp = response.meta['item']
 
         urls = response.css('div.item-image a::attr(href)').extract()
         prices = response.css('div.item-price::text').extract()
         quantities = response.css('p#inventory-message::text').extract()
         oems = response.css('div.item-details h5 a::text').extract()
         for num in range(len(urls)):
-            url = urls[num]
-            item['url'] = url.strip()
+            item = BirdseyeItem()
+            url = urls[num].strip()
             item['price'] = (prices[num]).strip()
             item['stock_quantity'] = quantities[num]
-            item['product_url'] = url.strip()
+            item['product_url'] = url
             item['product_name'] = ''
             item['oem'] = oems[num]
+            item['url'] = temp['url']
+            item['manufacturer'] = temp['manufacturer']
+            item['vendor'] = temp['vendor']
+            request = scrapy.Request(url, callback=self.description, meta={'item': item})
             # print item
-            # request = scrapy.Request(item['product_url'], callback=self.description, meta={'item': item})
-            yield item
+            yield request
+            # break
 
         paging = response.css('span.current + a::attr(href)').extract()
         if len(paging) > 0:
@@ -49,8 +52,8 @@ class XsupplySpider(scrapy.Spider):
 
     def description(self, response):
         item = response.meta['item']
-        # item['description'] = ''
-        # description = response.css('h5.title + div.col-md-13').extract()
-        # if len(description) > 0:
-        #     item['description'] = description[0]
+        item['description'] = ''
+        description = response.css('h5.title + div.col-md-13').extract()
+        if len(description) > 0:
+            item['description'] = description[0]
         yield item
