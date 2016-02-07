@@ -8,16 +8,16 @@ class ShopspsSpider(scrapy.Spider):
     name = "west"
     allowed_domains = ["westcmr.com"]
     start_urls = [
-        'http://www.westcmr.com/american-medical-systems',
-        'http://www.westcmr.com/anspach'
+        # 'http://www.westcmr.com/american-medical-systems',
+        # 'http://www.westcmr.com/anspach'
     ]
 
     def __init__(self, **kwargs):
         super(ShopspsSpider, self).__init__(**kwargs)
         self.vendors = self.get_dict('assets//westcmr_vendors.json')
-        # for path in self.vendors:
-        #     url = path['url']
-        #     self.start_urls = self.start_urls + [url]
+        for path in self.vendors:
+            url = path['url']
+            self.start_urls = self.start_urls + [url]
 
     def parse(self, response):
         view_more_url = response.css('a.btn-view-more::attr(href)').extract()
