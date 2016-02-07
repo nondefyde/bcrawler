@@ -7,6 +7,7 @@ class XsupplySpider(scrapy.Spider):
     name = "xsupply"
     allowed_domains = ["xs-supply.com"]
     start_urls = ['http://www.xs-supply.com/product-list.html']
+    # start_urls = []
 
     def parse(self, response):
         urls = response.css('ul#nav li.level-1 a::attr(href)').extract()
@@ -19,7 +20,6 @@ class XsupplySpider(scrapy.Spider):
             item['vendor'] = 'http://www.xs-supply.com/'
             request = scrapy.Request(item['url'], callback=self.parse_url, meta={'item': item})
             yield request
-            break
 
     def parse_url(self, response):
         temp = response.meta['item']
@@ -40,9 +40,7 @@ class XsupplySpider(scrapy.Spider):
             item['manufacturer'] = temp['manufacturer']
             item['vendor'] = temp['vendor']
             request = scrapy.Request(url, callback=self.description, meta={'item': item})
-            # print item
             yield request
-            # break
 
         paging = response.css('span.current + a::attr(href)').extract()
         if len(paging) > 0:
