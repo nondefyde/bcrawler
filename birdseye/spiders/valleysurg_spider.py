@@ -15,7 +15,7 @@ class ValleysurgSpider(scrapy.Spider):
             item['url'] = "https://www.valleysurg.com"+url
             item['vendor'] = 'http://www.valleysurg.com'
             item['manufacturer'] = url[1:]
-            request = scrapy.Request("https://www.valleysurg.com/covidien", callback=self.parse_data, meta={'item': item})
+            request = scrapy.Request(item['url'], callback=self.parse_data, meta={'item': item})
             yield request
 
     def parse_data(self, response):
