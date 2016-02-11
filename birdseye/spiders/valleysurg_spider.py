@@ -2,60 +2,55 @@ import json
 import scrapy
 from birdseye.items import BirdseyeItem
 
-
 class ValleysurgSpider(scrapy.Spider):
-    vendors = ''
     name = "valley"
     allowed_domains = ["valleysurg.com"]
-    start_urls = []
-
-    pagination_url = 'http://www.valleysurg.com/products?limit=100&page=%s'
-    pag_max_count = 12
-
-    def __init__(self, **kwargs):
-        super(ValleysurgSpider, self).__init__(**kwargs)
-        self.init_page_urls()
-
-    def init_page_urls(self):
-        for page_num in range(1, self.pag_max_count):
-            url = self.pagination_url % page_num
-            self.start_urls = self.start_urls + [url]
+    start_urls = ["https://www.valleysurg.com"]
 
     def parse(self, response):
-        urls = response.css('div.image a::attr(href)').extract()
+        urls = response.css('ul.category-list li.has-no-children a::attr(href)').extract()
         for num in range(len(urls)):
-            url = urls[num]
+            url = urls[num].strip()
             item = BirdseyeItem()
-            item['url'] = url.strip()
-            item['vendor'] = 'http://www.valleysurg.com/'
-            request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
+            item['url'] = "https://www.valleysurg.com"+url
+            item['vendor'] = 'http://www.valleysurg.com'
+            item['manufacturer'] = url[1:]
+            request = scrapy.Request("https://www.valleysurg.com/covidien", callback=self.parse_data, meta={'item': item})
             yield request
 
-    def parse_event(self, response):
-        sel = response.css('html')
+    def parse_data(self, response):
+        sel = response.css('body')
+        temp = response.meta['item']
+
+        product_names = sel.css('h2.product-name a::text').extract()
+        product_urls = sel.css('h2.product-name a::attr(href)').extract()
+        prices = sel.css('div.price-box span.regular-price span::text').extract()
+        oem = sel.css('div.ratings div::text').extract()
+
+        for n in range(0, len(product_names)):
+            item = BirdseyeItem()
+            item['product_name'] = product_names[n]
+            item['oem'] = oem[n].strip()
+            item['product_url'] = product_urls[n]
+            item['price'] = prices[n]
+            item['url'] = temp['url']
+            item['vendor'] = temp['vendor']
+            item['manufacturer'] = temp['manufacturer']
+            request = scrapy.Request(item['product_url'], callback=self.parse_detail, meta={'item': item})
+            yield request
+
+        pagination_lists = sel.css('div.pages ol li.current + li a::attr(href)').extract()
+        pagination_lists = list(set(pagination_lists))
+        print pagination_lists
+        if len(pagination_lists) > 0:
+            request = scrapy.Request(pagination_lists[0], callback=self.parse_data, meta={'item': temp})
+            yield request
+
+    def parse_detail(self, response):
+        sel = response.css('body')
         item = response.meta['item']
-        product_name = sel.css('div.breadcrumb a:last-child::text').extract()[0]
-        item['product_name'] = product_name
-        item['oem'] = product_name.split(':')[1].strip()
-        item['product_url'] = response.request.url
-
-        description = sel.css('div#tab-description').extract()[0]
-        item['description'] = description
-
-        price = sel.css('div.price::text').extract()[0]
-        item['price'] = price.split(':')[0].strip()
-        item['manufacturer'] = 'VALLEY SURGICAL'
-
-        try:
-            stock = sel.css('div.description::text').extract()
-            item['stock_quantity'] = stock[len(stock) - 1]
-        except Exception as e:
-            item['stock_quantity'] = 'out of stock'
-        pass
-
+        item['stock_quantity'] = sel.css('p.availability span::text').extract()[0]
+        description = sel.css('div.panel-body div.std::text').extract()
+        if len(description) > 0:
+            item['description'] = description[0].strip()
         yield item
-
-    def get_dict(self, path):
-        with open(path, 'r') as f:
-            data = json.load(f)
-        return data
