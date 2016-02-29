@@ -7,6 +7,7 @@ class ShopspsSpider(scrapy.Spider):
     vendors = ''
     name = "sps"
     allowed_domains = ["shopsps.com"]
+    # start_urls = ['http://shopsps.com/pages/vendors']
     start_urls = []
 
     pagination_url = 'http://shopsps.com/collections/all?page=%s'
@@ -23,7 +24,21 @@ class ShopspsSpider(scrapy.Spider):
             self.start_urls = self.start_urls + [url]
             # break
 
+    # def parse(self, response):
+    #     urls = response.css('div#vendorsList a::attr(href)').extract()
+    #     manufacturers = response.css('div#vendorsList a::text').extract()
+    #     for num in range(len(urls)):
+    #         url = urls[num]
+    #         item = BirdseyeItem()
+    #         item['url'] = 'http://shopsps.com' + url.strip()
+    #         item['manufacturer'] = manufacturers[num]
+    #         item['vendor'] = 'http://shopsps.com'
+    #         request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
+    #         yield request
+    #         break
+
     def parse(self, response):
+        print response.request.url
         urls = response.css('div.details h3 a::attr(href)').extract()
         for num in range(len(urls)):
             url = urls[num]
@@ -33,7 +48,7 @@ class ShopspsSpider(scrapy.Spider):
             item['vendor'] = 'http://shopsps.com'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
-            # print item
+            # break
 
     def parse_event(self, response):
         sel = response.css('body')
