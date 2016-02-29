@@ -23,7 +23,6 @@ class ShopspsSpider(scrapy.Spider):
         for page_num in range(1, self.pag_max_count):
             url = self.pagination_url % page_num
             self.start_urls = self.start_urls + [url]
-            # break
 
     # def parse(self, response):
     #     urls = response.css('div#vendorsList a::attr(href)').extract()
@@ -45,7 +44,6 @@ class ShopspsSpider(scrapy.Spider):
             item['vendor'] = 'http://shopsps.com'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
-            break
 
     def parse_event(self, response):
         sel = response.css('body')
