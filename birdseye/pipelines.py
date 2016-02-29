@@ -50,7 +50,7 @@ class JsonWriterPipeline(object):
 
 class JsonStartUrlWriterPipeline(object):
     def __init__(self):
-        self.file = open('the url.json', 'wb')
+        self.file = open('assets/shopsps_vendors.json', 'wb')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item)) + ",\n"

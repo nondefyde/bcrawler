@@ -1,5 +1,6 @@
 import json
 import scrapy
+import re
 from birdseye.items import BirdseyeItem
 
 
@@ -30,15 +31,11 @@ class ShopspsSpider(scrapy.Spider):
     #     for num in range(len(urls)):
     #         url = urls[num]
     #         item = BirdseyeItem()
-    #         item['url'] = 'http://shopsps.com' + url.strip()
+    #         # item['url'] = 'http://shopsps.com' + url.strip()
     #         item['manufacturer'] = manufacturers[num]
-    #         item['vendor'] = 'http://shopsps.com'
-    #         request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
-    #         yield request
-    #         break
+    #         yield item
 
     def parse(self, response):
-        print response.request.url
         urls = response.css('div.details h3 a::attr(href)').extract()
         for num in range(len(urls)):
             url = urls[num]
@@ -48,7 +45,7 @@ class ShopspsSpider(scrapy.Spider):
             item['vendor'] = 'http://shopsps.com'
             request = scrapy.Request(item['url'], callback=self.parse_event, meta={'item': item})
             yield request
-            # break
+            break
 
     def parse_event(self, response):
         sel = response.css('body')
@@ -57,10 +54,16 @@ class ShopspsSpider(scrapy.Spider):
         item['product_name'] = sel.css('div h1.title::text').extract()[0]
         item['manufacturer'] = ''
         for vendor in self.vendors:
-            manufacturer = vendor['manufacturer']
-            search = manufacturer in item['product_name']
+            manufacturer = vendor['manufacturer'].strip()
+            manu = re.findall(r"[\w']+", manufacturer)
+            manu = ' '.join(manu)
+            pro_string = re.findall(r"[\w']+", item['product_name'])
+            pro_string = ' '.join(pro_string)
+            reg = r'\b%s\b' % manu
+            search = re.search(reg, pro_string)
             if search:
                 item['manufacturer'] = manufacturer
+                break
 
         oem = sel.css('div h3#sku::text').extract()[0]
         item['oem'] = oem.split(':')[1].strip()
