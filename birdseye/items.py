@@ -18,5 +18,6 @@ class BirdseyeItem(scrapy.Item):
     price = scrapy.Field()
     stock_quantity = scrapy.Field()
     product_url = scrapy.Field()
+    flag = scrapy.Field()
 
     pass
