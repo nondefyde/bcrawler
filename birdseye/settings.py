@@ -15,7 +15,7 @@ SPIDER_MODULES = ['birdseye.spiders']
 NEWSPIDER_MODULE = 'birdseye.spiders'
 
 ITEM_PIPELINES = {
-    # 'birdseye.pipelines.BirdseyePipeline': 600,
+    'birdseye.pipelines.BirdseyePipeline': 600,
     'birdseye.pipelines.JsonWriterPipeline': 800,
     # 'birdseye.pipelines.JsonStartUrlWriterPipeline': 900,
 }
