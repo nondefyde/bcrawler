@@ -6,7 +6,6 @@ from birdseye.items import BirdseyeItem
 class XsupplySpider(scrapy.Spider):
     name = "esu"
     allowed_domains = ["esutures.com"]
-    # start_urls = ['https://www.esutures.com/manufacturers/']
     start_urls = ['https://www.esutures.com/product/0-in-date/']
 
     def parse(self, response):
