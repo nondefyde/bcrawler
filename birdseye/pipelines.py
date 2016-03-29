@@ -17,6 +17,18 @@ class BirdseyePipeline(object):
         return item
 
     def _conditional_insert(self, tx, item):
+        # tx.execute("select * from product_tb where product_url = %s", (item['product_url'],))
+        # result = tx.fetchone()
+        # if result:
+        #     logging.log(logging.INFO, "Item already stored in db: %s" % item)
+        # else:
+        #     tx.execute(
+        #         "insert into product_tb (product_name, description, manufacturer, oem,"
+        #         " price, stock_quantity, product_url, vendor)"
+        #         "values (%s, %s, %s, %s, %s, %s, %s, %s)",
+        #         (item['product_name'], item['description'], item['manufacturer'], item['oem'],
+        #          item['price'], item['stock_quantity'], item['product_url'], item['vendor'])
+        #     )
 
         tx.execute(
             "insert into product_tb (product_name, description, manufacturer, oem,"
@@ -25,14 +37,6 @@ class BirdseyePipeline(object):
             (item['product_name'], item['description'], item['manufacturer'], item['oem'],
              item['price'], item['stock_quantity'], item['product_url'], item['vendor'])
         )
-
-        # query = "UPDATE product_tb SET "
-        # query += "product_name=%s, description=%s, manufacturer=%s, oem=%s,"
-        # query += "price=%s, stock_quantity=%s, vendor=%s WHERE product_url=%s "
-        #
-        #     tx.execute(query, (item['product_name'], item['description'], item['manufacturer'],
-        #                        item['oem'], item['price'], item['stock_quantity'], item['vendor'], item['product_url']))
-        #     logging.log(logging.INFO, "Item has  been updated in db: %s" % item)
 
     def handle_error(self, e):
         logging.log(logging.ERROR, e)
@@ -50,7 +54,7 @@ class JsonWriterPipeline(object):
 
 class JsonStartUrlWriterPipeline(object):
     def __init__(self):
-        self.file = open('assets/shopsps_vendors.json', 'wb')
+        self.file = open('assets/esu_vendors.json', 'wb')
 
     def process_item(self, item, spider):
         line = json.dumps(dict(item)) + ",\n"
